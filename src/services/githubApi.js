@@ -1,9 +1,4 @@
-/**
- * Fetches repositories from GitHub API based on the query.
- * 
- * @param {string} query - The search query.
- * @returns {Promise<Array>} Array of formatted repository objects.
- */
+
 export const searchGithubRepos = async (query) => {
   if (!query) return [];
   try {
@@ -12,10 +7,9 @@ export const searchGithubRepos = async (query) => {
       throw new Error(`GitHub API error: ${response.status}`);
     }
     const data = await response.json();
-    
-    // Map the GitHub repository data to match our application structure
+
     return (data.items || []).map(repo => {
-      // Determine difficulty level deterministically based on repository ID
+      
       const levels = ['Beginner', 'Intermediate', 'Advanced'];
       const assignedLevel = levels[repo.id % 3];
 
@@ -30,15 +24,15 @@ export const searchGithubRepos = async (query) => {
         owner: repo.owner.login,
         avatar: repo.owner.avatar_url,
         stars: repo.stargazers_count,
-        rawStars: repo.stargazers_count, // Keeping raw number for sorting
+        rawStars: repo.stargazers_count, 
         forks: repo.forks_count,
         language: repo.language || 'Multiple',
-        publishDate: repo.updated_at, // Use updated_at for sorting by latest
+        publishDate: repo.updated_at, 
         level: assignedLevel
       };
     });
   } catch (error) {
     console.error("Failed to fetch from GitHub:", error);
-    throw error; // Rethrow to be handled by the caller
+    throw error; 
   }
 };

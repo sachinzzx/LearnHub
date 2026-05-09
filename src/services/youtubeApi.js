@@ -1,9 +1,6 @@
 const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 const BASE_URL = 'https://www.googleapis.com/youtube/v3';
 
-/**
- * Helper to format view counts (e.g., 1500000 -> 1.5M)
- */
 const formatViews = (views) => {
   if (!views) return '0 views';
   const num = parseInt(views, 10);
@@ -12,13 +9,6 @@ const formatViews = (views) => {
   return num + ' views';
 };
 
-/**
- * Fetch videos from YouTube API based on a search query.
- * It first searches for videos, then fetches statistics (like views) for those specific videos.
- * 
- * @param {string} query - The search term
- * @returns {Promise<Array>} Array of formatted video objects
- */
 export const searchYouTubeVideos = async (query) => {
   if (!query) return [];
   if (!API_KEY) {
@@ -27,7 +17,7 @@ export const searchYouTubeVideos = async (query) => {
   }
 
   try {
-    // Step 1: Search for videos related to the query
+    
     const searchRes = await fetch(
       `${BASE_URL}/search?part=snippet&maxResults=6&q=${encodeURIComponent(query)}&type=video&key=${API_KEY}`
     );
@@ -43,10 +33,8 @@ export const searchYouTubeVideos = async (query) => {
       return [];
     }
 
-    // Extract video IDs to fetch statistics
     const videoIds = searchData.items.map(item => item.id.videoId).join(',');
 
-    // Step 2: Fetch detailed statistics (views) for these videos
     const statsRes = await fetch(
       `${BASE_URL}/videos?part=statistics,snippet&id=${videoIds}&key=${API_KEY}`
     );
@@ -56,34 +44,33 @@ export const searchYouTubeVideos = async (query) => {
     }
 
     const statsData = await statsRes.json();
-    
-    // Step 3: Map and combine the data into a clean structure
+
     return statsData.items.map(video => {
-      // Determine difficulty deterministically based on video ID length or chars
+      
       const levels = ['Beginner', 'Intermediate', 'Advanced'];
-      // A simple deterministic hash based on video.id
+      
       const hash = video.id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
       const assignedLevel = levels[hash % 3];
 
       return {
         id: `yt-${video.id}`,
         originalId: video.id,
-        type: 'youtube', // explicitly mark as youtube
+        type: 'youtube', 
         title: video.snippet.title,
         description: video.snippet.description,
         channelName: video.snippet.channelTitle,
         publishDate: video.snippet.publishedAt,
         views: formatViews(video.statistics.viewCount),
-        rawViews: parseInt(video.statistics.viewCount, 10) || 0, // Keeping raw number for sorting
+        rawViews: parseInt(video.statistics.viewCount, 10) || 0, 
         url: `https://www.youtube.com/watch?v=${video.id}`,
         image: video.snippet.thumbnails?.high?.url || video.snippet.thumbnails?.medium?.url,
-        category: 'YouTube Video', // maintain compatibility with existing FilterBar
-        level: assignedLevel // new property for filtering
+        category: 'YouTube Video', 
+        level: assignedLevel 
       };
     });
     
   } catch (error) {
     console.error("Failed to fetch YouTube videos:", error);
-    throw error; // Rethrow to be handled by the caller
+    throw error; 
   }
 };

@@ -18,9 +18,9 @@ const NotesSection = ({ stepId }) => {
   };
 
   return (
-    <div className="glass-card p-6 mt-8">
+    <div className="glass-card p-6 mt-8 border border-orange-100/20 dark:border-orange-900/10">
       <div className="flex items-center gap-2 mb-4">
-        <BookOpen className="w-6 h-6 text-indigo-500" />
+        <BookOpen className="w-6 h-6 text-orange-500" />
         <h3 className="text-xl font-bold text-slate-900 dark:text-white">Personal Notes</h3>
       </div>
       

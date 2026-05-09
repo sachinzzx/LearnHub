@@ -9,11 +9,9 @@ const StepCard = ({ step, roadmapId, index }) => {
 
   return (
     <div className="relative flex items-start gap-4 group">
-      
-      {/* Timeline connector (line) */}
+
       <div className="absolute top-8 bottom-[-2rem] left-5 w-px bg-slate-200 dark:bg-slate-700 group-last:hidden z-0"></div>
 
-      {/* Status Icon */}
       <div className="relative z-10 flex-shrink-0 mt-1 bg-light-bg dark:bg-dark-bg py-1">
         {completed ? (
           <CheckCircle className="w-10 h-10 text-green-500 fill-green-100 dark:fill-green-900/30" />
@@ -22,14 +20,13 @@ const StepCard = ({ step, roadmapId, index }) => {
         )}
       </div>
 
-      {/* Card Content */}
       <Link 
         to={`/dashboard/${roadmapId}/step/${step.id}`}
-        className="flex-grow glass-card p-5 hover:border-blue-500/50 dark:hover:border-blue-400/50 transition-all duration-300 mb-6"
+        className="flex-grow glass-card p-5 hover:border-orange-500/50 dark:hover:border-orange-400/50 transition-all duration-300 mb-6"
       >
         <div className="flex justify-between items-start">
           <div>
-            <span className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2 block">
+            <span className="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider mb-2 block">
               Step {index + 1}
             </span>
             <h4 className={`text-xl font-bold mb-2 ${completed ? 'text-slate-600 dark:text-slate-300' : 'text-slate-900 dark:text-white'}`}>
@@ -39,7 +36,7 @@ const StepCard = ({ step, roadmapId, index }) => {
               {step.description}
             </p>
           </div>
-          <div className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:text-blue-500 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors">
+          <div className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:text-orange-500 group-hover:bg-orange-50 dark:group-hover:bg-orange-900/20 transition-colors">
             <ChevronRight className="w-5 h-5" />
           </div>
         </div>

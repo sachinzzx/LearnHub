@@ -25,16 +25,14 @@ const VideoCard = ({ video }) => {
 
   return (
     <div className="glass-card flex flex-col h-full overflow-hidden group">
-      
-      {/* Thumbnail Section */}
+
       <div className="relative h-48 overflow-hidden bg-slate-900">
         <img 
           src={video.image} 
           alt={video.title} 
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out opacity-90 group-hover:opacity-100"
         />
-        
-        {/* Play Button Overlay */}
+
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/20">
           <div className="w-14 h-14 bg-red-600/90 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(220,38,38,0.5)] transform scale-75 group-hover:scale-100 transition-all duration-500 delay-100">
             <Play className="w-6 h-6 text-white ml-1 fill-white" />
@@ -55,8 +53,7 @@ const VideoCard = ({ video }) => {
           <MonitorPlay className="w-3.5 h-3.5 text-red-500" /> YouTube
         </div>
       </div>
-      
-      {/* Content Section */}
+
       <div className="p-6 flex flex-col flex-grow">
         <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 line-clamp-2 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-300" title={video.title}>
           {video.title}
@@ -70,8 +67,7 @@ const VideoCard = ({ video }) => {
           </div>
           <p className="truncate" title={video.channelName}>{video.channelName}</p>
         </div>
-        
-        {/* Video Stats */}
+
         <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-slate-500 dark:text-slate-400">
           <div className="flex items-center gap-1.5">
             <Eye className="w-4 h-4 text-slate-400" />
@@ -83,7 +79,6 @@ const VideoCard = ({ video }) => {
           </div>
         </div>
 
-        {/* Action Link */}
         <a 
           href={video.url} 
           target="_blank" 

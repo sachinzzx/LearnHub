@@ -25,8 +25,8 @@ const ResourceCard = ({ resource }) => {
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
-            <BookOpen className="w-16 h-16 text-blue-300 dark:text-slate-500" />
+          <div className="w-full h-full bg-gradient-to-br from-orange-100 to-red-100 dark:from-zinc-800 dark:to-zinc-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
+            <BookOpen className="w-16 h-16 text-orange-300 dark:text-zinc-500" />
           </div>
         )}
         
@@ -45,7 +45,7 @@ const ResourceCard = ({ resource }) => {
       </div>
       
       <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 line-clamp-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-300">
           {resource.title}
         </h3>
         

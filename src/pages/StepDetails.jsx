@@ -39,7 +39,7 @@ const StepDetails = () => {
     const fetchStepData = async () => {
       setLoading(true);
       try {
-        // Fetch resources using the predefined highly-optimized query for this step
+        
         const data = await searchResources(stepData.query);
         setResources(data);
       } catch (err) {
@@ -60,10 +60,9 @@ const StepDetails = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
-      
-      {/* Header */}
+
       <div className="mb-10">
-        <Link to={`/dashboard/${roadmap.id}`} className="inline-flex items-center text-sm font-semibold text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-6">
+        <Link to={`/dashboard/${roadmap.id}`} className="inline-flex items-center text-sm font-semibold text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors mb-6">
           <ArrowLeft className="w-4 h-4 mr-2" /> Back to {roadmap.title}
         </Link>
         
@@ -82,7 +81,7 @@ const StepDetails = () => {
             className={`flex items-center gap-3 px-6 py-4 rounded-xl shadow-sm transition-all duration-300 font-bold border-2 flex-shrink-0 ${
               completed 
                 ? 'bg-green-50 dark:bg-green-900/20 border-green-500 text-green-700 dark:text-green-400' 
-                : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-blue-500 dark:hover:border-blue-500'
+                : 'bg-white dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 text-slate-700 dark:text-slate-300 hover:border-orange-500 dark:hover:border-orange-500'
             }`}
           >
             {completed ? <CheckCircle className="w-6 h-6 text-green-500" /> : <Circle className="w-6 h-6 text-slate-400" />}
@@ -92,15 +91,14 @@ const StepDetails = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-        
-        {/* Left Column: Resources */}
+
         <div className="lg:col-span-2 space-y-12">
           
           {loading ? (
             <Loader />
           ) : (
             <>
-              {/* Videos Section */}
+              
               <section>
                 <div className="flex items-center gap-2 mb-6">
                   <MonitorPlay className="w-6 h-6 text-red-500" />
@@ -117,7 +115,6 @@ const StepDetails = () => {
                 )}
               </section>
 
-              {/* Repositories Section */}
               <section>
                 <div className="flex items-center gap-2 mb-6">
                   <GitBranch className="w-6 h-6 text-slate-700 dark:text-slate-300" />
@@ -134,7 +131,6 @@ const StepDetails = () => {
                 )}
               </section>
 
-              {/* GeeksForGeeks Section */}
               {step.gfgLinks && step.gfgLinks.length > 0 && (
                 <section>
                   <div className="flex items-center gap-2 mb-6">
@@ -153,7 +149,6 @@ const StepDetails = () => {
 
         </div>
 
-        {/* Right Column: Notes */}
         <div className="lg:col-span-1">
           <div className="sticky top-24">
             <NotesSection stepId={step.id} />

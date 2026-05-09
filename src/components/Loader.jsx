@@ -1,13 +1,8 @@
 import React from 'react';
 import SkeletonCard from './SkeletonCard';
 
-/**
- * Loader Component
- * Renders a responsive grid of SkeletonCards to simulate the exact layout
- * of the incoming data, providing a polished, portfolio-quality loading state.
- */
 const Loader = () => {
-  // Create an array of 6 items to render 6 skeleton cards
+  
   const skeletons = Array.from({ length: 6 });
 
   return (

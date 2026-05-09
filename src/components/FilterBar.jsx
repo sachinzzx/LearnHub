@@ -14,8 +14,7 @@ const FilterBar = ({
 
   return (
     <div className="flex flex-col gap-4 my-6 p-4 glass-card">
-      
-      {/* Category Filter */}
+
       <div className="flex items-center flex-wrap gap-2">
         <span className="text-sm font-semibold text-slate-500 dark:text-slate-400 w-20">Category:</span>
         <button
@@ -43,7 +42,6 @@ const FilterBar = ({
         ))}
       </div>
 
-      {/* Difficulty Level Filter */}
       <div className="flex items-center flex-wrap gap-2">
         <span className="text-sm font-semibold text-slate-500 dark:text-slate-400 w-20">Level:</span>
         {levels.map((level) => (
@@ -61,7 +59,6 @@ const FilterBar = ({
         ))}
       </div>
 
-      {/* Sorting Options */}
       <div className="flex items-center flex-wrap gap-2 mt-2 pt-4 border-t border-slate-200 dark:border-slate-700/50">
         <span className="text-sm font-semibold text-slate-500 dark:text-slate-400 w-20">Sort By:</span>
         <div className="flex gap-2 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">

@@ -4,7 +4,7 @@ import { FavoritesContext } from '../context/FavoritesContext';
 
 const GFGCard = ({ article }) => {
   const { isFavorite, addFavorite, removeFavorite } = useContext(FavoritesContext);
-  // Using URL as a unique ID since it's hardcoded and unique
+  
   const favorite = isFavorite(article.url);
 
   const toggleFavorite = (e) => {
@@ -16,7 +16,6 @@ const GFGCard = ({ article }) => {
     }
   };
 
-  // Determine tag color based on difficulty
   const getDifficultyColor = (level) => {
     switch(level?.toLowerCase()) {
       case 'easy':
@@ -29,12 +28,11 @@ const GFGCard = ({ article }) => {
 
   return (
     <div className="glass-card flex flex-col h-full overflow-hidden group">
-      
-      {/* Header Section */}
+
       <div className="p-6 pb-4 flex items-start justify-between border-b border-slate-200 dark:border-slate-800 bg-[#2F8D46]/5 dark:bg-[#2F8D46]/10">
         <div className="flex items-center gap-4 overflow-hidden">
           <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center flex-shrink-0 border border-slate-100 dark:border-slate-700">
-            {/* Simple GFG Text Logo representation */}
+            
             <span className="font-extrabold text-[#2F8D46] text-xl tracking-tighter">GFG</span>
           </div>
           <div className="truncate">
@@ -57,14 +55,12 @@ const GFGCard = ({ article }) => {
           />
         </button>
       </div>
-      
-      {/* Content Section */}
+
       <div className="p-6 flex flex-col flex-grow">
         <p className="text-sm text-slate-600 dark:text-slate-300 mb-6 line-clamp-3 flex-grow leading-relaxed">
           {article.description}
         </p>
 
-        {/* Action Link */}
         <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
           <a
             href={article.url}

@@ -3,24 +3,21 @@ import React, { createContext, useState, useEffect } from 'react';
 export const ProgressContext = createContext();
 
 export const ProgressProvider = ({ children }) => {
-  // Track completed steps by their IDs
+  
   const [completedSteps, setCompletedSteps] = useState(() => {
     const saved = localStorage.getItem('completedSteps');
     return saved ? JSON.parse(saved) : [];
   });
 
-  // Track user notes for each step
   const [notes, setNotes] = useState(() => {
     const saved = localStorage.getItem('notes');
     return saved ? JSON.parse(saved) : {};
   });
 
-  // Persist completed steps
   useEffect(() => {
     localStorage.setItem('completedSteps', JSON.stringify(completedSteps));
   }, [completedSteps]);
 
-  // Persist notes
   useEffect(() => {
     localStorage.setItem('notes', JSON.stringify(notes));
   }, [notes]);

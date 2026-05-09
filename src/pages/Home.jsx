@@ -16,7 +16,7 @@ const Home = () => {
   const debouncedSearchQuery = useDebounce(searchQuery, 600);
   
   const [resources, setResources] = useState([]);
-  const [loading, setLoading] = useState(false); // Default to false so roadmaps show initially
+  const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(null);
   
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -82,9 +82,9 @@ const Home = () => {
 
   const getIcon = (iconName) => {
     switch(iconName) {
-      case 'Code2': return <Code2 className="w-8 h-8 text-blue-500" />;
-      case 'Binary': return <Binary className="w-8 h-8 text-emerald-500" />;
-      case 'Server': return <Server className="w-8 h-8 text-green-500" />;
+      case 'Code2': return <Code2 className="w-8 h-8 text-orange-500" />;
+      case 'Binary': return <Binary className="w-8 h-8 text-amber-500" />;
+      case 'Server': return <Server className="w-8 h-8 text-rose-500" />;
       default: return <Map className="w-8 h-8 text-primary" />;
     }
   };
@@ -94,7 +94,7 @@ const Home = () => {
       <div className="text-center mb-16 animate-in slide-in-from-bottom-4 duration-700 fade-in">
         <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">
           Welcome to <br className="hidden md:block" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600">LearnHub</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-red-500 to-rose-600">LearnHub</span>
         </h1>
         <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
           Your guided learning platform. Choose a predefined roadmap to master a skill, or search for specific resources instantly.
@@ -105,11 +105,10 @@ const Home = () => {
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       </div>
 
-      {/* Show Roadmaps if no search query is active */}
       {!debouncedSearchQuery && !loading && (
         <div className="animate-in fade-in duration-700 slide-in-from-bottom-8">
           <div className="flex items-center gap-3 mb-8">
-            <Map className="w-8 h-8 text-indigo-500" />
+            <Map className="w-8 h-8 text-orange-500" />
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Structured Learning Paths</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -117,12 +116,12 @@ const Home = () => {
               <Link 
                 key={roadmap.id} 
                 to={`/dashboard/${roadmap.id}`}
-                className="glass-card p-8 group flex flex-col items-center text-center hover:border-indigo-500/50 transition-all duration-300 cursor-pointer"
+                className="glass-card p-8 group flex flex-col items-center text-center hover:border-orange-500/50 transition-all duration-300 cursor-pointer"
               >
                 <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                   {getIcon(roadmap.icon)}
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
                   {roadmap.title}
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -134,7 +133,6 @@ const Home = () => {
         </div>
       )}
 
-      {/* Search Results Area */}
       {debouncedSearchQuery && (
         <div className="animate-in fade-in duration-500">
           {!loading && !error && categories.length > 0 && (

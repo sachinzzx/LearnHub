@@ -2,12 +2,6 @@ import React, { useContext } from 'react';
 import { Star, GitFork, Code2, Heart, GitBranch, ExternalLink } from 'lucide-react';
 import { FavoritesContext } from '../context/FavoritesContext';
 
-/**
- * RepoCard Component
- * Displays a responsive, glassmorphism-styled card tailored for GitHub repositories.
- * 
- * @param {Object} repo - The repository data object
- */
 const RepoCard = ({ repo }) => {
   const { isFavorite, addFavorite, removeFavorite } = useContext(FavoritesContext);
   const favorite = isFavorite(repo.id);
@@ -21,7 +15,6 @@ const RepoCard = ({ repo }) => {
     }
   };
 
-  // Helper to format large numbers for stars and forks
   const formatNumber = (num) => {
     if (num >= 1000) return (num / 1000).toFixed(1) + 'k';
     return num;
@@ -29,8 +22,7 @@ const RepoCard = ({ repo }) => {
 
   return (
     <div className="glass-card flex flex-col h-full overflow-hidden group">
-      
-      {/* Header Section */}
+
       <div className="p-6 pb-4 flex items-start justify-between border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
         <div className="flex items-center gap-4 overflow-hidden">
           {repo.avatar ? (
@@ -46,7 +38,7 @@ const RepoCard = ({ repo }) => {
           )}
           <div className="truncate">
             <p className="text-sm font-medium text-slate-500 dark:text-slate-400 truncate">{repo.owner}</p>
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white truncate group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" title={repo.title}>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white truncate group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors" title={repo.title}>
               {repo.title}
             </h3>
           </div>
@@ -62,14 +54,12 @@ const RepoCard = ({ repo }) => {
           />
         </button>
       </div>
-      
-      {/* Content Section */}
+
       <div className="p-6 flex flex-col flex-grow">
         <p className="text-sm text-slate-600 dark:text-slate-300 mb-6 line-clamp-3 flex-grow leading-relaxed">
           {repo.description}
         </p>
 
-        {/* Repository Stats */}
         <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-600 dark:text-slate-400 mb-6 mt-auto">
           <div className="flex items-center gap-1.5" title="Stars">
             <Star className="w-4 h-4 text-yellow-500" />
@@ -85,7 +75,6 @@ const RepoCard = ({ repo }) => {
           </div>
         </div>
 
-        {/* Action Link */}
         <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
           <a
             href={repo.url}

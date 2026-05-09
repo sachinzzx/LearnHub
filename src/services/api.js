@@ -1,7 +1,6 @@
 import { searchYouTubeVideos } from './youtubeApi';
 import { searchGithubRepos } from './githubApi';
 
-// Dummy default resources if search is empty
 export const defaultResources = [
   {
     id: 'default-1',
@@ -31,7 +30,6 @@ export const defaultResources = [
   }
 ];
 
-// Existing dummy functions for backward compatibility
 export const getResources = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -48,28 +46,22 @@ export const getResourceById = (id) => {
   });
 };
 
-/**
- * Main search function that fetches from GitHub and the actual YouTube API.
- * @param {string} query - The search query.
- */
 export const searchResources = async (query) => {
   if (!query || query.trim() === '') {
     return defaultResources;
   }
 
-  // Fetch concurrently
   const [githubResults, youtubeResults] = await Promise.all([
     searchGithubRepos(query).catch(err => {
       console.error("GitHub Fetch failed in searchResources:", err);
-      return []; // Return empty if GitHub fails
+      return []; 
     }),
     searchYouTubeVideos(query).catch(err => {
       console.error("YouTube Fetch failed in searchResources:", err);
-      return []; // Return empty if YouTube fails so GitHub still shows
+      return []; 
     })
   ]);
 
-  // Interleave the results
   const combined = [];
   const maxLength = Math.max(githubResults.length, youtubeResults.length);
   

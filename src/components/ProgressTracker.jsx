@@ -22,12 +22,12 @@ const ProgressTracker = ({ roadmap }) => {
         </div>
         
         <div className="flex flex-col items-end min-w-[200px]">
-          <span className="text-2xl font-extrabold text-blue-600 dark:text-blue-400 mb-2">
+          <span className="text-2xl font-extrabold text-orange-600 dark:text-orange-400 mb-2">
             {progress}% Completed
           </span>
           <div className="w-full h-3 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-1000 ease-out"
+              className="h-full bg-gradient-to-r from-orange-500 to-red-500 rounded-full transition-all duration-1000 ease-out"
               style={{ width: `${progress}%` }}
             ></div>
           </div>

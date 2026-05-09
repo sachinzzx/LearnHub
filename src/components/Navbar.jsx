@@ -10,10 +10,9 @@ const Navbar = () => {
   return (
     <nav className="glass-nav py-4 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        
-        {/* Logo and Branding */}
+
         <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="bg-gradient-to-br from-blue-600 to-indigo-600 p-2 rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300 transform group-hover:scale-105">
+          <div className="bg-gradient-to-br from-orange-500 to-red-600 p-2 rounded-xl shadow-md group-hover:shadow-[0_8px_20px_rgba(249,115,22,0.3)] transition-all duration-300 transform group-hover:scale-105">
             <Sparkles className="w-6 h-6 text-white" />
           </div>
           <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
@@ -21,7 +20,6 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Navigation Links and Actions */}
         <div className="flex items-center gap-3 sm:gap-5">
           <Link 
             to="/favorites" 
